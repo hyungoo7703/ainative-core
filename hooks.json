@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hook": "if echo \"$TOOL_INPUT\" | grep -q 'git commit'; then echo '[ainative-core] 커밋 완료 — /review로 코드 리뷰를 실행하세요'; fi",
+        "description": "커밋 후 리뷰 알림"
+      }
+    ],
+    "Stop": [
+      {
+        "hook": "echo '[ainative-core] 작업 완료 전 /verify로 검증했는지 확인하세요'",
+        "description": "응답 완료 시 검증 알림"
+      }
+    ]
+  }
+}
