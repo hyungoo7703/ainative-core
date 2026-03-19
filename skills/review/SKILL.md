@@ -1,5 +1,6 @@
 ---
-description: 변경된 코드 리뷰
+name: review
+description: 코드 리뷰. 코드 변경, git diff, PR 작성 시 자동 활성화.
 ---
 
 git diff로 변경된 코드를 확인하고, 다음 기준으로 리뷰해주세요:
