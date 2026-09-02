@@ -10,6 +10,7 @@ ainative-core/
 ├── commands/    ← Slash commands (plan, init, spec, etc.)
 ├── skills/      ← Auto-activated workflows (review, debug, verify, etc.)
 ├── agents/      ← Specialized sub-agents (reviewer, planner)
+├── hooks/       ← Hook scripts (referenced from hooks.json)
 └── install.sh   ← Install to ~/.claude/
 ```
 
@@ -24,14 +25,30 @@ bash install.sh
 ### Rules (4)
 `language` · `coding-style` · `git-convention` · `security`
 
-### Commands (12)
-`/research` · `/spec` · `/init` · `/plan` · `/tdd` · `/check-env` · `/security` · `/summarize` · `/docs` · `/how-to-run` · `/continue` · `/usage`
+### Commands (13)
+`/research` · `/spec` · `/init` · `/plan` · `/tdd` · `/check-env` · `/security` · `/summarize` · `/docs` · `/how-to-run` · `/continue` · `/usage` · `/remember`
 
 ### Skills (11) — auto-activated
 `review` · `debug` · `verify` · `refactor` · `api-design` · `error-handling` · `performance` · `accessibility` · `pr-description` · `code-review-response` · `explain`
 
 ### Agents (2)
 `reviewer` · `planner`
+
+### Hooks
+- `SessionStart` — shows inbox items for the current project or due within 7 days
+- `PostToolUse` (git commit) — reminds to run `/review`
+- `Stop` — reminds to run `/verify`
+
+## Remember (cross-project inbox)
+
+`/remember <what>` appends one line to an inbox file; the SessionStart hook surfaces relevant lines when you open a project.
+The inbox lives outside this repo. Point to it with `CLAUDE_INBOX` in `~/.claude/settings.json` (defaults to `~/.claude/inbox.md`):
+
+```json
+{ "env": { "CLAUDE_INBOX": "/path/to/inbox.md" } }
+```
+
+Line format: `- [ ] recorded | due YYYY-MM-DD or - | project | what | why`
 
 ## Principles
 

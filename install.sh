@@ -1,6 +1,6 @@
 #!/bin/bash
 # ainative-core installer
-# Copies rules, commands, agents, and skills to ~/.claude/
+# Copies rules, commands, agents, hooks, and skills to ~/.claude/
 # Merges hooks into ~/.claude/settings.json
 
 set -e
@@ -14,9 +14,10 @@ echo "Installing ainative-core to $TARGET_DIR ..."
 mkdir -p "$TARGET_DIR/rules"
 mkdir -p "$TARGET_DIR/commands"
 mkdir -p "$TARGET_DIR/agents"
+mkdir -p "$TARGET_DIR/hooks"
 
 # Copy flat directories (rules, commands, agents)
-for dir in rules commands agents; do
+for dir in rules commands agents hooks; do
   if [ -d "$SCRIPT_DIR/$dir" ]; then
     find "$SCRIPT_DIR/$dir" -type f ! -name '.gitkeep' -exec cp {} "$TARGET_DIR/$dir/" \;
   fi
@@ -52,9 +53,9 @@ if [ -f "$SCRIPT_DIR/hooks.json" ]; then
       if (!settings.hooks) settings.hooks = {};
       for (const [event, eventHooks] of Object.entries(hooks.hooks)) {
         if (!settings.hooks[event]) settings.hooks[event] = [];
-        // Remove existing ainative-core hooks (identified by [ainative-core] in hook command)
+        // Remove existing ainative-core hooks (identified by [ainative-core] in any hook command)
         settings.hooks[event] = settings.hooks[event].filter(
-          h => !h.hook || !h.hook.includes('[ainative-core]')
+          h => !(h.hooks || []).some(x => (x.command || '').includes('[ainative-core]'))
         );
         // Add new hooks
         settings.hooks[event].push(...eventHooks);
