@@ -1,5 +1,5 @@
 ---
-name: init
+name: setup
 description: Choose a tech stack and set up a new project.
 disable-model-invocation: true
 ---

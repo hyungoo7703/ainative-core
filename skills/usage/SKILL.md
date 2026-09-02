@@ -20,7 +20,7 @@ Show the user what ainative-core provides.
 ```
 /research  → compare references and libraries
 /spec      → requirements and feature spec
-/init      → tech stack and initial setup
+/setup     → tech stack and initial setup
 /plan      → implementation plan
 start coding
   (auto) review   → on code changes
