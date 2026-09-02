@@ -27,3 +27,7 @@ Append one line to the inbox:
 - No argument: list follow-up candidates that came up in this session and record only the ones the user confirms
 - `list`: show all open items sorted by due date
 - `done <keyword>`: mark matching items `[x]`, move them to archive.md, and remove them from the inbox. Confirm first if more than one matches
+
+## Auto-archive
+
+The SessionStart hook moves open items more than 30 days past their due date to archive.md, marked `auto-archived <date>`. Items without a due date are never auto-archived.

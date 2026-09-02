@@ -37,7 +37,7 @@ bash install.sh --lang Korean   # or ko, ja, English, ...
 `reviewer` · `planner`
 
 ### Hooks
-- `SessionStart`: shows inbox items for the current project or due within 7 days
+- `SessionStart`: shows inbox items for the current project or due within 7 days, and auto-archives items more than 30 days past due
 
 ## Remember (cross-project inbox)
 
