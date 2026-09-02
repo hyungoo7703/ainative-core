@@ -38,7 +38,6 @@ bash install.sh --lang Korean   # or ko, ja, English, ...
 
 ### Hooks
 - `SessionStart`: shows inbox items for the current project or due within 7 days
-- `PostToolUse` (git commit): reminds to run `/review`
 
 ## Remember (cross-project inbox)
 

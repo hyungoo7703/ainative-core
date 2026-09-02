@@ -9,17 +9,6 @@
           }
         ]
       }
-    ],
-    "PostToolUse": [
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash \"$HOME/.claude/hooks/review-reminder.sh\" # [ainative-core] review reminder after git commit"
-          }
-        ]
-      }
     ]
   }
 }
