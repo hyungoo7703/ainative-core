@@ -28,7 +28,7 @@ bash install.sh --lang Korean   # or ko, ja, English, ...
 `language` · `coding-style` · `git-convention` · `security` · `context-persistence` · per-language rules for TypeScript, Python, Go, Rust, C#
 
 ### Commands (skills you run with `/name`)
-`/research` · `/spec` · `/setup` · `/plan` · `/tdd` · `/check-env` · `/security` · `/summarize` · `/docs` · `/how-to-run` · `/continue` · `/why` · `/remember` · `/usage`
+`/research` · `/spec` · `/setup` · `/plan` · `/tdd` · `/check-env` · `/security` · `/summarize` · `/docs` · `/how-to-run` · `/continue` · `/why` · `/remember` · `/clip` · `/usage`
 
 ### Auto skills (Claude applies them when the situation matches)
 `review` · `debug` · `verify` · `refactor` · `api-design` · `error-handling` · `performance` · `accessibility` · `pr-description` · `code-review-response` · `explain`
@@ -49,6 +49,10 @@ The inbox lives outside this repo. Point to it with `CLAUDE_INBOX` in `~/.claude
 ```
 
 Line format: `- [ ] recorded | due YYYY-MM-DD or - | project | what | why`
+
+## Clip (save an answer as-is)
+
+`/clip` writes the previous answer (or the part you name) verbatim to a markdown file, so tables and code blocks are preserved. Set `CLAUDE_CLIPS` to the folder (defaults to `~/.claude/clips`) and open it with any markdown viewer.
 
 ## Principles
 
