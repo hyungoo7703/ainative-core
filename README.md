@@ -37,7 +37,7 @@ bash install.sh --lang Korean   # or ko, ja, English, ...
 `reviewer` · `planner`
 
 ### Hooks
-- `SessionStart`: shows inbox items for the current project or due within 7 days, and auto-archives items more than 30 days past due
+- `SessionStart`: shows inbox items for the current project or due within 7 days; archives checked items (`[x]`, e.g. ticked in Obsidian) and items more than 30 days past due
 
 ## Remember (cross-project inbox)
 
@@ -52,7 +52,7 @@ Line format: `- [ ] recorded | due YYYY-MM-DD or - | project | what | why`
 
 ## Clip (save an answer as-is)
 
-`/clip` writes the previous answer (or the part you name) verbatim to a markdown file, so tables and code blocks are preserved. Set `CLAUDE_CLIPS` to the folder (defaults to `~/.claude/clips`) and open it with any markdown viewer.
+`/clip` writes the previous answer (or the part you name) verbatim to a markdown note, so tables and code blocks are preserved. Set `CLAUDE_CLIPS` to the folder (defaults to `~/.claude/clips`). Notes carry `date`, `project`, and `tags` properties plus `[[projects/<name>]]` and `[[date]]` links, so an Obsidian vault rooted at the parent folder gets tags, backlinks, graph clustering, and Bases tables for free.
 
 ## Principles
 
