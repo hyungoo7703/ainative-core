@@ -12,7 +12,7 @@ HITS=$(grep '^- \[ \]' "$INBOX" | while IFS= read -r line; do
   proj=$(printf '%s' "$line" | awk -F' [|] ' '{print $3}')
   if [ "$proj" = "$PROJECT" ]; then
     printf '%s\n' "$line"
-  elif [ "$due" != "-" ] && [ -n "$due" ] && [ "$due" \< "$LIMIT" -o "$due" = "$LIMIT" ]; then
+  elif [ "$due" != "-" ] && [ -n "$due" ] && { [ "$due" \< "$LIMIT" ] || [ "$due" = "$LIMIT" ]; }; then
     printf '%s\n' "$line"
   fi
 done)

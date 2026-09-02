@@ -16,7 +16,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "grep -q 'git commit' && echo '[ainative-core] Commit done. Run /review to review the changes.'; exit 0"
+            "command": "bash \"$HOME/.claude/hooks/review-reminder.sh\" # [ainative-core] review reminder after git commit"
           }
         ]
       }

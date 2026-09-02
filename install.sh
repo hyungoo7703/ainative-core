@@ -11,14 +11,17 @@ set -e
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 TARGET_DIR="$HOME/.claude"
 LANG_FILE="$TARGET_DIR/.ainative-lang"
+SKILLS_MANIFEST="$TARGET_DIR/.ainative-skills"
+
+usage() { echo "Usage: bash install.sh [--lang <language>]"; exit 1; }
 
 # --- response language ---------------------------------------------------------
 RESPONSE_LANGUAGE=""
 while [ $# -gt 0 ]; do
   case "$1" in
-    --lang) RESPONSE_LANGUAGE="$2"; shift 2 ;;
+    --lang) [ -n "${2:-}" ] || usage; RESPONSE_LANGUAGE="$2"; shift 2 ;;
     --lang=*) RESPONSE_LANGUAGE="${1#--lang=}"; shift ;;
-    *) echo "Unknown option: $1"; echo "Usage: bash install.sh [--lang <language>]"; exit 1 ;;
+    *) echo "Unknown option: $1"; usage ;;
   esac
 done
 if [ -z "$RESPONSE_LANGUAGE" ] && [ -f "$LANG_FILE" ]; then
@@ -31,6 +34,10 @@ case "$RESPONSE_LANGUAGE" in
   ja|jp) RESPONSE_LANGUAGE="Japanese" ;;
   zh|cn) RESPONSE_LANGUAGE="Chinese" ;;
 esac
+# The value is substituted into a rule file; keep it to plain words
+if ! [[ "$RESPONSE_LANGUAGE" =~ ^[A-Za-z][A-Za-z\ -]*$ ]]; then
+  echo "Invalid language: '$RESPONSE_LANGUAGE' (letters, spaces, and hyphens only)"; exit 1
+fi
 mkdir -p "$TARGET_DIR"
 printf '%s' "$RESPONSE_LANGUAGE" > "$LANG_FILE"
 echo "Installing ainative-core to $TARGET_DIR (response language: $RESPONSE_LANGUAGE) ..."
@@ -44,13 +51,30 @@ done
 sed "s/{{RESPONSE_LANGUAGE}}/$RESPONSE_LANGUAGE/g" "$SCRIPT_DIR/rules/language.md" > "$TARGET_DIR/rules/language.md"
 
 # --- skills (keep skills/<name>/ layout) ----------------------------------------
+CURRENT_SKILLS=""
 for skill_dir in "$SCRIPT_DIR/skills"/*/; do
   skill_name=$(basename "$skill_dir")
+  CURRENT_SKILLS="$CURRENT_SKILLS$skill_name"$'\n'
   mkdir -p "$TARGET_DIR/skills/$skill_name"
   cp "$skill_dir"* "$TARGET_DIR/skills/$skill_name/"
   # Commands were merged into skills; drop the legacy command file so /name is not registered twice
-  rm -f "$TARGET_DIR/commands/$skill_name.md"
+  if [ -f "$TARGET_DIR/commands/$skill_name.md" ]; then
+    echo "Removing legacy command: commands/$skill_name.md (now a skill)"
+    rm -f "$TARGET_DIR/commands/$skill_name.md"
+  fi
 done
+# Remove skills that a previous install put in place but this version no longer ships (renamed or deleted).
+# Only names listed in the manifest are touched, so skills the user added by hand are left alone.
+if [ -f "$SKILLS_MANIFEST" ]; then
+  while IFS= read -r old; do
+    [ -n "$old" ] || continue
+    if ! printf '%s' "$CURRENT_SKILLS" | grep -qx "$old"; then
+      echo "Removing stale skill: skills/$old"
+      rm -rf "$TARGET_DIR/skills/$old"
+    fi
+  done < "$SKILLS_MANIFEST"
+fi
+printf '%s' "$CURRENT_SKILLS" > "$SKILLS_MANIFEST"
 
 # --- hooks.json -> settings.json ------------------------------------------------
 NODE_SETTINGS=$(cygpath -w "$TARGET_DIR/settings.json" 2>/dev/null || echo "$TARGET_DIR/settings.json")
