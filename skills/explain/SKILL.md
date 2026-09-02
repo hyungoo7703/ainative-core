@@ -1,30 +1,30 @@
 ---
 name: explain
-description: 코드나 개념을 사용자 수준에 맞게 설명. 설명 요청, "이게 뭐야", "어떻게 동작해" 등의 질문 시 자동 활성화.
+description: Explain code or a concept at the level of the user. Use when asked "what is this", "how does this work", or for any explanation.
 ---
 
-설명은 사용자가 이해할 수 있는 수준으로 합니다.
+Explain at a level the user can follow.
 
-## 설명 구조
+## Structure
 
-### 1. 한 줄 요약
-- 이게 뭔지 한 문장으로
+### 1. One-line summary
+- What it is, in one sentence
 
-### 2. 비유
-- 익숙한 개념에 빗대어 설명
-- 기술 배경에 따라 비유 수준 조절
+### 2. Analogy
+- Relate it to something familiar
+- Adjust the analogy to the technical background of the user
 
-### 3. 핵심 동작
-- 어떻게 동작하는지 단계별로
-- 코드를 가리키며 설명 (파일:라인)
-- 필요하면 다이어그램 (Mermaid)
+### 3. How it works
+- Step by step
+- Point at the code (file:line)
+- Add a Mermaid diagram if it helps
 
-### 4. 주의할 점
-- 흔히 헷갈리는 부분
-- 관련된 다른 개념과의 차이
+### 4. Pitfalls
+- Commonly confused points
+- How it differs from related concepts
 
-## 원칙
-- 전문 용어를 쓸 때는 바로 설명을 붙인다
-- "당연히 아시겠지만" 같은 표현 금지
-- 너무 길지 않게 — 핵심만 전달
-- 추가 질문을 유도한다 ("더 깊이 알고 싶으면 말씀해주세요")
+## Principles
+- Define jargon the moment you use it
+- Never say "as you obviously know"
+- Keep it short; deliver the essentials
+- Stop when the explanation is complete; no closing offer

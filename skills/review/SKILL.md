@@ -1,18 +1,18 @@
 ---
 name: review
-description: 코드 리뷰. 코드 변경, git diff, PR 작성 시 자동 활성화.
+description: Code review. Use after code changes, on git diff, or when preparing a PR.
 ---
 
-git diff로 변경된 코드를 확인하고, 다음 기준으로 리뷰해주세요:
+Read the changed code with `git diff` and review against:
 
-1. **버그 가능성**: 논리 오류, off-by-one, null/undefined 처리 누락
-2. **보안**: 외부 입력 검증, 민감 정보 노출, injection 가능성
-3. **가독성**: 네이밍 명확성, 불필요한 복잡성, 매직 넘버
-4. **에러 핸들링**: 시스템 경계에서의 에러 처리 적절성
+1. **Bugs**: logic errors, off-by-one, missing null/undefined handling
+2. **Security**: input validation, secret exposure, injection
+3. **Readability**: naming, unnecessary complexity, magic numbers
+4. **Error handling**: appropriate handling at system boundaries
 
-리뷰 결과는 다음 형식으로 작성:
-- 🔴 **반드시 수정**: 버그나 보안 문제
-- 🟡 **권장**: 개선하면 좋은 점
-- 🟢 **좋음**: 잘 작성된 부분
+Report in this format:
+- 🔴 **Must fix**: bugs or security issues
+- 🟡 **Recommended**: worthwhile improvements
+- 🟢 **Good**: well-written parts
 
-수정 사항이 없으면 "LGTM"으로 마무리.
+If nothing needs changing, end with "LGTM".

@@ -1,37 +1,37 @@
 ---
 name: performance
-description: 성능 최적화 체크. 성능 이슈, 느린 코드, 최적화 요청 시 자동 활성화.
+description: Performance checklist. Use for performance issues, slow code, or optimization requests.
 ---
 
-성능 문제는 측정 먼저, 최적화는 그 다음입니다.
+Measure first. Optimize second.
 
-## 체크리스트
+## Checklist
 
-### 데이터베이스
-- N+1 쿼리 (반복문 안에서 쿼리 실행)
-- 인덱스 누락 (WHERE, JOIN, ORDER BY 컬럼)
-- SELECT * 대신 필요한 컬럼만 조회
-- 대량 데이터 페이지네이션 누락
-- 불필요한 트랜잭션 범위
+### Database
+- N+1 queries (queries inside loops)
+- Missing indexes (WHERE, JOIN, ORDER BY columns)
+- `SELECT *` instead of the needed columns
+- Missing pagination on large result sets
+- Overly wide transaction scope
 
-### API / 네트워크
-- 불필요한 API 호출 (같은 데이터 반복 요청)
-- 응답 크기 과대 (필요 없는 필드 포함)
-- 캐싱 미적용 (변경이 드문 데이터)
-- 병렬 가능한 요청을 순차 실행
+### API / network
+- Redundant calls (same data requested repeatedly)
+- Oversized responses (unneeded fields)
+- No caching on rarely changing data
+- Sequential requests that could run in parallel
 
-### 프론트엔드
-- 불필요한 리렌더링 (React: useMemo, useCallback 필요 여부)
-- 큰 번들 사이즈 (코드 스플리팅, 동적 import)
-- 이미지 최적화 (사이즈, 포맷, lazy loading)
-- 메모리 릭 (이벤트 리스너 정리, 구독 해제)
+### Frontend
+- Unnecessary re-renders (check whether memoization is actually needed; React Compiler may already handle it)
+- Large bundles (code splitting, dynamic import)
+- Unoptimized images (size, format, lazy loading)
+- Memory leaks (listeners not removed, subscriptions not cleaned up)
 
-### 일반
-- 불필요한 반복 (O(n²) → O(n) 가능한 곳)
-- 큰 객체 깊은 복사 (structuredClone 남용)
-- 동기 I/O 사용 (비동기로 전환)
+### General
+- Unnecessary loops (O(n²) where O(n) is possible)
+- Deep copies of large objects (structuredClone overuse)
+- Synchronous I/O (switch to async)
 
-## 원칙
-- 추측하지 말고 측정한다
-- 병목 지점만 최적화한다
-- 가독성을 해치는 최적화는 지양한다
+## Principles
+- Measure, do not guess
+- Optimize only the bottleneck
+- Do not trade readability for speed without evidence

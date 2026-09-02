@@ -17,5 +17,5 @@ HITS=$(grep '^- \[ \]' "$INBOX" | while IFS= read -r line; do
   fi
 done)
 
-[ -n "$HITS" ] && printf '[ainative-core] 기억할 항목 (%s 기준, 프로젝트: %s)\n%s\n항목을 처리했으면 /remember done <키워드>로 정리하세요.\n' "$TODAY" "$PROJECT" "$HITS"
+[ -n "$HITS" ] && printf '[ainative-core] Inbox items to remember (as of %s, project: %s)\n%s\nMention these to the user. When handled, run /remember done <keyword>.\n' "$TODAY" "$PROJECT" "$HITS"
 exit 0

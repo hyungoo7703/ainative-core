@@ -1,38 +1,38 @@
 ---
 name: accessibility
-description: 웹 접근성(a11y) 검사. HTML, UI 컴포넌트 작성 시 자동 활성화.
+description: Web accessibility (a11y) checklist. Use when writing HTML or UI components.
 ---
 
-웹 접근성은 선택이 아닌 기본입니다.
+Accessibility is a baseline, not an option.
 
-## 필수 체크
+## Checklist
 
-### 시맨틱 HTML
-- 적절한 태그 사용 (`button`, `nav`, `main`, `header` 등)
-- `div` 남용 금지 — 의미 있는 태그로 대체
-- heading 계층 순서 유지 (h1 → h2 → h3)
+### Semantic HTML
+- Use the right element (`button`, `nav`, `main`, `header`, ...)
+- Do not overuse `div`; replace with meaningful elements
+- Keep heading order (h1 → h2 → h3)
 
-### 이미지 / 미디어
-- 모든 `img`에 의미 있는 `alt` 속성
-- 장식용 이미지는 `alt=""`
-- 비디오에 자막/캡션
+### Images and media
+- Every `img` has a meaningful `alt`
+- Decorative images use `alt=""`
+- Videos have captions
 
-### 폼
-- 모든 input에 `label` 연결
-- 에러 메시지를 시각적 + 프로그래밍적으로 표시
-- 필수 필드 표시 (`aria-required`)
+### Forms
+- Every input has an associated `label`
+- Show errors both visually and programmatically
+- Mark required fields (`aria-required`)
 
-### 키보드
-- 모든 인터랙티브 요소에 키보드 접근 가능
-- Tab 순서가 논리적
-- 포커스 표시가 보임 (outline 제거 금지)
-- 모달/드롭다운에 포커스 트랩
+### Keyboard
+- Every interactive element is reachable by keyboard
+- Tab order is logical
+- Focus is visible (never remove the outline)
+- Modals and dropdowns trap focus
 
-### 색상 / 대비
-- 텍스트 대비율 4.5:1 이상 (WCAG AA)
-- 색상만으로 정보 전달하지 않음 (아이콘, 텍스트 병행)
+### Color and contrast
+- Text contrast at least 4.5:1 (WCAG AA)
+- Never convey information by color alone (add icons or text)
 
 ### ARIA
-- 네이티브 HTML로 가능하면 ARIA 불필요
-- 커스텀 컴포넌트에는 적절한 role, aria-label
-- 동적 콘텐츠 변경 시 `aria-live`
+- Prefer native HTML; ARIA is unnecessary when native elements work
+- Custom components get a proper `role` and `aria-label`
+- Dynamic content changes use `aria-live`

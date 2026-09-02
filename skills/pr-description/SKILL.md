@@ -1,40 +1,40 @@
 ---
 name: pr-description
-description: PR 작성 가이드. Pull Request 생성, PR 설명 작성 시 자동 활성화.
+description: Pull request writing guide. Use when creating a PR or writing its description.
 ---
 
-PR은 리뷰어가 빠르게 이해할 수 있도록 작성합니다.
+Write PRs so the reviewer understands them quickly.
 
-## PR 제목
-- 70자 이내
-- Conventional Commits 형식: `feat: 기능 설명` / `fix: 버그 설명`
-- "what"이 아닌 "why" 중심
+## Title
+- Under 70 characters
+- Conventional Commits: `feat: ...` / `fix: ...`
+- Lead with "why", not "what"
 
-## PR 본문 템플릿
+## Body template
 
 ```markdown
-## 요약
-(1~3줄로 이 PR이 무엇을 왜 하는지)
+## Summary
+(1 to 3 lines: what this PR does and why)
 
-## 변경 사항
-- (주요 변경 1)
-- (주요 변경 2)
+## Changes
+- (main change 1)
+- (main change 2)
 
-## 스크린샷
-(UI 변경이 있으면 before/after)
+## Screenshots
+(before/after for UI changes)
 
-## 테스트
-- [ ] 단위 테스트 추가/수정
-- [ ] 수동 테스트 완료
-- [ ] 기존 테스트 통과 확인
+## Testing
+- [ ] Unit tests added or updated
+- [ ] Manual testing done
+- [ ] Existing tests pass
 
-## 체크리스트
-- [ ] 코드 셀프 리뷰 완료
-- [ ] 불필요한 console.log 제거
-- [ ] 관련 문서 업데이트 (해당 시)
+## Checklist
+- [ ] Self-reviewed
+- [ ] No leftover debug output (console.log, print, ...)
+- [ ] Docs updated (if applicable)
 ```
 
-## 원칙
-- 하나의 PR에 하나의 목적
-- PR이 크면 쪼갠다 (리뷰어 부담 감소)
-- Draft PR을 활용하여 조기 피드백
+## Principles
+- One purpose per PR
+- Split large PRs to reduce reviewer load
+- Use draft PRs for early feedback

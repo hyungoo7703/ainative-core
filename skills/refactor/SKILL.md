@@ -1,29 +1,29 @@
 ---
 name: refactor
-description: 리팩토링 시 단계적 접근법. 코드 구조 변경, 리팩토링 요청 시 자동 활성화.
+description: Step-by-step refactoring approach. Use when restructuring code or asked to refactor.
 ---
 
-리팩토링은 반드시 단계적으로 진행합니다.
+Refactor in small, verified steps.
 
-## 원칙
+## Principles
 
-1. **기존 테스트가 통과하는 상태에서 시작**
-2. **한 번에 하나의 변경만** — 이름 변경, 추출, 이동 등을 섞지 않는다
-3. **각 단계마다 테스트 실행** — 깨지면 즉시 되돌린다
-4. **동작을 바꾸지 않는다** — 리팩토링은 구조만 바꾸는 것
+1. **Start from green**: existing tests pass
+2. **One change at a time**: do not mix rename, extract, and move
+3. **Run tests after every step**: revert immediately if they break
+4. **Do not change behavior**: refactoring changes structure only
 
-## 단계
+## Steps
 
-1. 변경할 코드의 현재 테스트 커버리지 확인
-2. 테스트가 부족하면 먼저 테스트 추가
-3. 작은 단위로 변경 (추출, 이름 변경, 이동 순)
-4. 매 변경 후 테스트 실행
-5. 완료 후 전체 테스트 실행
+1. Check test coverage of the code you will change
+2. Add tests first if coverage is lacking
+3. Change in small units (extract, rename, move, in that order)
+4. Run tests after each change
+5. Run the full suite when done
 
-## 자주 쓰는 리팩토링 패턴
+## Common refactorings
 
-- **Extract Function** — 긴 함수에서 의미 있는 단위 추출
-- **Rename** — 의도를 명확히 하는 이름으로 변경
-- **Move** — 적절한 모듈/파일로 이동
-- **Inline** — 불필요한 추상화 제거
-- **Replace Conditional with Polymorphism** — 복잡한 분기를 다형성으로
+- **Extract Function**: pull a meaningful unit out of a long function
+- **Rename**: make intent explicit
+- **Move**: relocate to the right module or file
+- **Inline**: remove an unnecessary abstraction
+- **Replace Conditional with Polymorphism**: turn complex branching into polymorphism

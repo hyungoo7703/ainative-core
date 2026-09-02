@@ -1,43 +1,44 @@
 # ainative-core
 
-Personal Claude Code harness — universal rules, commands, skills, and agents for any project.
+Personal Claude Code harness: universal rules, skills, agents, and hooks for any project.
 
 ## Structure
 
 ```
 ainative-core/
-├── rules/       ← Always-on rules (coding style, security, git conventions)
-├── commands/    ← Slash commands (plan, init, spec, etc.)
-├── skills/      ← Auto-activated workflows (review, debug, verify, etc.)
+├── rules/       ← Always-on rules (language, coding style, git, security, per-language)
+├── skills/      ← Slash commands and auto-applied workflows (one folder per skill)
 ├── agents/      ← Specialized sub-agents (reviewer, planner)
-├── hooks/       ← Hook scripts (referenced from hooks.json)
+├── hooks/       ← Hook scripts referenced from hooks.json
+├── hooks.json   ← Hook definitions merged into ~/.claude/settings.json
 └── install.sh   ← Install to ~/.claude/
 ```
 
 ## Install
 
 ```bash
-bash install.sh
+bash install.sh --lang Korean   # or ko, ja, English, ...
 ```
 
-## What's Included
+`--lang` sets the language Claude responds in. Everything in this repo is written in English; the language rule tells Claude to answer, and to render skill output templates, in your language. The choice is saved to `~/.claude/.ainative-lang`, so later installs can omit the flag.
 
-### Rules (4)
-`language` · `coding-style` · `git-convention` · `security`
+## What is included
 
-### Commands (13)
-`/research` · `/spec` · `/init` · `/plan` · `/tdd` · `/check-env` · `/security` · `/summarize` · `/docs` · `/how-to-run` · `/continue` · `/usage` · `/remember`
+### Rules
+`language` · `coding-style` · `git-convention` · `security` · `context-persistence` · per-language rules for TypeScript, Python, Go, Rust, C#
 
-### Skills (11) — auto-activated
+### Commands (skills you run with `/name`)
+`/research` · `/spec` · `/init` · `/plan` · `/tdd` · `/check-env` · `/security` · `/summarize` · `/docs` · `/how-to-run` · `/continue` · `/why` · `/remember` · `/usage`
+
+### Auto skills (Claude applies them when the situation matches)
 `review` · `debug` · `verify` · `refactor` · `api-design` · `error-handling` · `performance` · `accessibility` · `pr-description` · `code-review-response` · `explain`
 
-### Agents (2)
+### Agents
 `reviewer` · `planner`
 
 ### Hooks
-- `SessionStart` — shows inbox items for the current project or due within 7 days
-- `PostToolUse` (git commit) — reminds to run `/review`
-- `Stop` — reminds to run `/verify`
+- `SessionStart`: shows inbox items for the current project or due within 7 days
+- `PostToolUse` (git commit): reminds to run `/review`
 
 ## Remember (cross-project inbox)
 
@@ -52,7 +53,6 @@ Line format: `- [ ] recorded | due YYYY-MM-DD or - | project | what | why`
 
 ## Principles
 
-1. Observe first — record repeated patterns from real usage
+1. Observe first: record repeated patterns from real usage
 2. Automate only what repeats 3+ times
-3. Build order: rules → commands → skills → agents → hooks
-4. Delete what you don't use
+3. Build order: rules → skills → agents → hooks

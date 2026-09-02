@@ -1,32 +1,32 @@
 ---
 name: debug
-description: 체계적 디버깅. 에러 발생, 버그 수정, 문제 해결 시 자동 활성화.
+description: Systematic debugging. Use when an error occurs, a bug needs fixing, or something is not working.
 ---
 
-버그를 체계적으로 분석하고 수정합니다. 추측으로 코드를 고치지 마세요.
+Analyze bugs systematically. Never fix code by guessing.
 
-## 4단계 프로세스
+## Four phases
 
-### 1단계: 근본 원인 조사
-- 에러 메시지와 스택 트레이스를 정확히 읽는다
-- 문제를 재현한다
-- 최근 변경 사항을 확인한다
-- 데이터 흐름을 역추적한다
+### 1. Root cause investigation
+- Read the error message and stack trace exactly
+- Reproduce the problem
+- Check recent changes
+- Trace the data flow backwards
 
-### 2단계: 패턴 분석
-- 동일한 기능의 정상 동작 코드와 비교한다
-- 동작하는 코드와 깨진 코드의 차이를 찾는다
-- 의존성과 전제 조건을 파악한다
+### 2. Pattern analysis
+- Compare with working code that does the same thing
+- Find the difference between working and broken code
+- Identify dependencies and preconditions
 
-### 3단계: 가설 검증
-- 원인에 대한 가설을 명확히 세운다
-- 가장 작은 변경으로 테스트한다
-- 한 번에 하나의 변수만 바꾼다
-- 실패하면 새 가설을 세운다, 수정을 덧붙이지 않는다
+### 3. Hypothesis testing
+- State a clear hypothesis about the cause
+- Test it with the smallest possible change
+- Change one variable at a time
+- If it fails, form a new hypothesis; do not stack fixes
 
-### 4단계: 수정
-- 문제를 재현하는 테스트를 작성한다
-- 근본 원인을 해결하는 단일 수정을 적용한다
-- 테스트가 통과하고 다른 테스트가 깨지지 않는지 확인한다
+### 4. Fix
+- Write a test that reproduces the problem
+- Apply a single fix that addresses the root cause
+- Confirm the test passes and no other tests break
 
-**3번 이상 수정이 실패하면**: 멈추고 아키텍처 자체가 잘못된 건 아닌지 재평가한다.
+**After three failed fixes**: stop and reconsider whether the architecture itself is wrong.

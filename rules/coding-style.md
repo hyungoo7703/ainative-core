@@ -1,7 +1,7 @@
 # Coding Style
 
-- 간결하고 읽기 쉬운 코드를 우선한다
-- 불필요한 추상화를 만들지 않는다 — 3번 이상 반복되기 전까지는 인라인
-- 에러 핸들링은 시스템 경계(사용자 입력, 외부 API)에서만 한다
-- 사용하지 않는 코드는 주석 처리하지 말고 삭제한다
-- TODO 주석은 `// TODO(이유): 설명` 형식으로 남긴다
+- Prefer concise, readable code
+- No premature abstraction: inline until something repeats three or more times
+- Handle errors only at system boundaries (user input, external APIs)
+- Delete unused code instead of commenting it out
+- TODO comments use the form `// TODO(reason): description`

@@ -5,7 +5,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"$HOME/.claude/hooks/remember-recall.sh\" # [ainative-core] 세션 시작 시 inbox 항목 표시"
+            "command": "bash \"$HOME/.claude/hooks/remember-recall.sh\" # [ainative-core] recall inbox items"
           }
         ]
       }
@@ -16,17 +16,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "if echo \"$TOOL_INPUT\" | grep -q 'git commit'; then echo '[ainative-core] 커밋 완료 — /review로 코드 리뷰를 실행하세요'; fi"
-          }
-        ]
-      }
-    ],
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "echo '[ainative-core] 작업 완료 전 /verify로 검증했는지 확인하세요'"
+            "command": "grep -q 'git commit' && echo '[ainative-core] Commit done. Run /review to review the changes.'; exit 0"
           }
         ]
       }

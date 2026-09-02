@@ -1,26 +1,25 @@
 ---
 name: verify
-description: 작업 완료 전 검증. 작업 완료, "다 됐다", 기능 구현 완료 시 자동 활성화.
+description: Verification before declaring work done. Use when a task is finished, a feature is implemented, or you are about to say it works.
 ---
 
-작업이 완료되었다고 판단하기 전에, 반드시 아래를 검증하세요.
-"아마 될 것 같다"는 검증이 아닙니다. 직접 실행하고 결과를 확인하세요.
+Before calling work done, verify the items below.
+"It should work" is not verification. Run it and look at the result.
 
-## 검증 절차
+## Steps
 
-1. **빌드 확인** — 빌드가 성공하는가
-2. **테스트 확인** — 모든 테스트가 통과하는가 (0 failures)
-3. **린트 확인** — 린터 에러가 없는가
-4. **원래 문제 확인** — 버그 수정이라면, 원래 증상이 해결되었는가
-5. **명세 대비 확인** — spec 문서(CLAUDE.md, docs/spec.md)가 있으면 읽고, 합의된 항목이 모두 구현되었는지 하나씩 대조한다
-6. **요구사항 확인** — 요청된 기능이 모두 구현되었는가
-7. **사이드 이펙트 확인** — 다른 기능이 깨지지 않았는가
+1. **Build**: does it build
+2. **Tests**: do all tests pass (0 failures)
+3. **Lint**: no linter errors
+4. **Original problem**: for a bug fix, is the original symptom gone
+5. **Spec**: if a spec document exists (CLAUDE.md, docs/spec.md), read it and check every agreed item
+6. **Requirements**: is everything that was asked for implemented
+7. **Side effects**: did anything else break
 
-## 금지 표현
+## Forbidden without evidence
 
-다음 표현은 검증 없이 사용하지 않는다:
-- "아마 될 겁니다"
-- "동작할 것 같습니다"
-- "문제없어 보입니다"
+- "It should work"
+- "It probably works"
+- "Looks fine"
 
-**증거 먼저, 주장은 그 다음.**
+**Evidence first, claims second.**

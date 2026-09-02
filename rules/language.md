@@ -1,7 +1,7 @@
-# Language Rules
+# Language
 
-- 모든 응답은 한국어로 작성
-- 코드 주석은 영어로 유지
-- 변수명, 함수명, 클래스명은 영어로 작성
-- 커밋 메시지는 영어로 작성
-- README 등 문서는 작성 대상에 따라 판단 (공개 프로젝트는 영어, 내부용은 한국어)
+- Respond in {{RESPONSE_LANGUAGE}}. This includes headings, labels, and output templates defined in skills and agents
+- Code comments in English
+- Variable, function, and class names in English
+- Commit messages in English
+- Documentation such as README: English for public projects, {{RESPONSE_LANGUAGE}} for internal ones
