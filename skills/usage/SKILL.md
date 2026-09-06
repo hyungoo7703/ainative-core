@@ -30,6 +30,8 @@ start coding
 /check-env → environment config check
 /security  → security audit
 /docs      → generate documentation
+/pdf       → render a markdown file to a styled PDF
+/clip      → save an answer verbatim as a markdown note
 /remember  → record follow-ups for later
 ```
 
