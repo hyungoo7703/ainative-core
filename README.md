@@ -56,7 +56,7 @@ Line format: `- [ ] recorded | due YYYY-MM-DD or - | project | what | why`
 
 ## PDF (markdown to a styled PDF)
 
-`/pdf <file.md>` renders the file to `<file>.pdf` next to it: A4, Korean-safe fonts, styled tables and code, Mermaid diagrams, title block from YAML front matter. Needs `pandoc` and Chrome/Chromium/Edge (override with `CLAUDE_PDF_BROWSER`). Pairs with `/docs`, which writes front-matter-ready markdown.
+`/pdf <file.md>` renders the file to `<file>.pdf` next to it: A4, Korean-safe fonts, styled tables and code, Mermaid diagrams (syntax-checked first, with the offending line reported), title block from YAML front matter. Needs `pandoc` and Chrome/Chromium/Edge (override with `CLAUDE_PDF_BROWSER`). Pairs with `/docs`, which writes front-matter-ready markdown.
 
 ## Requirements
 
@@ -68,7 +68,7 @@ Nothing is bundled; the scripts call tools already on your machine.
 | Node.js | `install.sh` | merges hooks into `settings.json` |
 | [pandoc](https://pandoc.org) | `/pdf` | markdown to HTML |
 | Chrome, Chromium, or Edge | `/pdf` | headless HTML to PDF |
-| [Mermaid](https://mermaid.js.org) | `/pdf` | loaded from jsDelivr at render time, not stored in this repo |
+| [Mermaid](https://mermaid.js.org) | `/pdf` | downloaded once from jsDelivr into `~/.cache/ainative-core/`, not stored in this repo |
 
 ## License
 
