@@ -23,7 +23,7 @@ Then reply with the PDF path only.
 - pandoc turns the markdown (GitHub flavor plus YAML front matter) into HTML with the bundled `style.css`, then Chrome or Edge in headless mode prints it to A4.
 - Title block: `title`, `subtitle`, `author`, `date` from YAML front matter. Without front matter, a single leading `# Heading` becomes the title; otherwise the file name is used. `date` defaults to today.
 - Mermaid code blocks are validated with the real parser before rendering, then drawn as diagrams. The Mermaid script is downloaded once to `~/.cache/ainative-core/` and used offline afterwards.
-- Tables, code blocks, and headings avoid page breaks inside them.
+- Nothing exceeds the page width: long tokens in tables and code wrap, tables with five or more columns use a smaller font, diagrams and images shrink to fit. Table rows, code blocks, and headings avoid page breaks inside them; table headers repeat on each page.
 
 ## Before rendering
 

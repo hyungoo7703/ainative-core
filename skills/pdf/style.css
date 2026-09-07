@@ -7,13 +7,22 @@ header#title-block-header { margin-bottom: 36px; }
 header#title-block-header h1.title { font-size: 26pt; border: none; margin: 0 0 6px; }
 p.subtitle { font-size: 14pt; color: #555; margin: 0 0 12px; }
 p.author, p.date { color: #666; margin: 0; font-size: 10.5pt; }
-table { border-collapse: collapse; width: 100%; margin: 12px 0; font-size: 10pt; page-break-inside: avoid; }
-th, td { border: 1px solid #ccc; padding: 6px 9px; text-align: left; vertical-align: top; }
+/* Nothing may exceed the page width: PDFs cannot scroll sideways */
+table { border-collapse: collapse; width: 100%; max-width: 100%; margin: 12px 0; font-size: 10pt; }
+thead { display: table-header-group; }
+tr { page-break-inside: avoid; }
+th, td { border: 1px solid #ccc; padding: 6px 9px; text-align: left; vertical-align: top; overflow-wrap: anywhere; word-break: break-word; }
+table:has(th:nth-child(5)) { font-size: 9pt; }
+table:has(th:nth-child(5)) th, table:has(th:nth-child(5)) td { padding: 4px 6px; }
+table:has(th:nth-child(7)) { font-size: 8pt; }
 th { background: #f2f2f2; font-weight: 600; }
 tr:nth-child(even) td { background: #fafafa; }
-code { font-family: "Cascadia Code", "D2Coding", Consolas, monospace; font-size: 9.5pt; background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
-pre { background: #f6f8fa; border: 1px solid #e1e4e8; border-radius: 6px; padding: 12px 14px; overflow-x: auto; page-break-inside: avoid; }
+code { font-family: "Cascadia Code", "D2Coding", Consolas, monospace; font-size: 9.5pt; background: #f4f4f4; padding: 1px 4px; border-radius: 3px; overflow-wrap: anywhere; }
+td code, th code { font-size: 0.92em; }
+pre { background: #f6f8fa; border: 1px solid #e1e4e8; border-radius: 6px; padding: 12px 14px; white-space: pre-wrap; overflow-wrap: anywhere; page-break-inside: avoid; }
 pre code { background: none; padding: 0; }
 blockquote { border-left: 4px solid #ccc; margin: 12px 0; padding: 4px 16px; color: #555; }
 .mermaid { text-align: center; margin: 16px 0; page-break-inside: avoid; }
+.mermaid svg { max-width: 100% !important; height: auto; }
+img { max-width: 100%; height: auto; }
 h1, h2, h3 { page-break-after: avoid; }
