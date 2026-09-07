@@ -58,6 +58,22 @@ Line format: `- [ ] recorded | due YYYY-MM-DD or - | project | what | why`
 
 `/pdf <file.md>` renders the file to `<file>.pdf` next to it: A4, Korean-safe fonts, styled tables and code, Mermaid diagrams, title block from YAML front matter. Needs `pandoc` and Chrome/Chromium/Edge (override with `CLAUDE_PDF_BROWSER`). Pairs with `/docs`, which writes front-matter-ready markdown.
 
+## Requirements
+
+Nothing is bundled; the scripts call tools already on your machine.
+
+| Tool | Used by | Notes |
+|------|---------|-------|
+| Bash | `install.sh`, hook scripts | Git Bash on Windows works |
+| Node.js | `install.sh` | merges hooks into `settings.json` |
+| [pandoc](https://pandoc.org) | `/pdf` | markdown to HTML |
+| Chrome, Chromium, or Edge | `/pdf` | headless HTML to PDF |
+| [Mermaid](https://mermaid.js.org) | `/pdf` | loaded from jsDelivr at render time, not stored in this repo |
+
+## License
+
+MIT. See [LICENSE](LICENSE).
+
 ## Principles
 
 1. Observe first: record repeated patterns from real usage
