@@ -28,7 +28,7 @@ bash install.sh --lang Korean   # or ko, ja, English, ...
 `language` · `coding-style` · `git-convention` · `security` · `context-persistence` · per-language rules for TypeScript, Python, Go, Rust, C#
 
 ### Commands (skills you run with `/name`)
-`/research` · `/spec` · `/setup` · `/plan` · `/tdd` · `/check-env` · `/security` · `/summarize` · `/docs` · `/how-to-run` · `/continue` · `/why` · `/remember` · `/clip` · `/pdf` · `/usage`
+`/research` · `/spec` · `/setup` · `/plan` · `/tdd` · `/check-env` · `/security` · `/summarize` · `/docs` · `/how-to-run` · `/continue` · `/why` · `/remember` · `/clip` · `/pdf` · `/usage` · `/harness-review`
 
 ### Auto skills (Claude applies them when the situation matches)
 `review` · `debug` · `verify` · `refactor` · `api-design` · `error-handling` · `performance` · `accessibility` · `pr-description` · `code-review-response` · `explain`
@@ -53,6 +53,10 @@ Line format: `- [ ] recorded | due YYYY-MM-DD or - | project | what | why`
 ## Clip (save an answer as-is)
 
 `/clip` writes the previous answer (or the part you name) verbatim to a markdown note, so tables and code blocks are preserved. Set `CLAUDE_CLIPS` to the folder (defaults to `~/.claude/clips`). Notes carry `date`, `project`, and `tags` properties plus `[[projects/<name>]]` and `[[date]]` links, so an Obsidian vault rooted at the parent folder gets tags, backlinks, graph clustering, and Bases tables for free.
+
+## Harness review (prune and promote from real usage)
+
+`/harness-review` reads usage snapshots (JSON counts of sessions, skill calls, typed commands, hooks and tools, produced by an external collector) and compares them with `rules/`, `skills/` and `hooks/` in this checkout. It proposes what to prune and what to promote, each with the number that justifies it, and applies changes only when you pick them. Run it from the ainative-core checkout and pass the snapshot folder with `--add-dir` (or set `CLAUDE_HARNESS_SNAPSHOTS`).
 
 ## PDF (markdown to a styled PDF)
 
