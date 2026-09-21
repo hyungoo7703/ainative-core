@@ -57,7 +57,7 @@ Line format: `- [ ] recorded | due YYYY-MM-DD or - | project | what | why`
 
 ## Harness review (prune and promote from real usage)
 
-`/harness-review` reads usage snapshots (JSON counts of sessions, skill calls, typed commands, hooks and tools, produced by an external collector) and compares them with `rules/`, `skills/` and `hooks/` in this checkout. It proposes what to prune and what to promote, each with the number that justifies it, and applies changes only when you pick them. Run it from the ainative-core checkout and pass the snapshot folder with `--add-dir` (or set `CLAUDE_HARNESS_SNAPSHOTS`).
+`/harness-review` reads usage snapshots (JSON counts of sessions, skill calls, typed commands, hooks and tools, produced by an external collector) and compares them with `rules/`, `skills/` and `hooks/` in this checkout. It proposes what to prune and what to promote, each with the number that justifies it, and applies changes only when you pick them. Items you defer are recorded in `docs/deferred-decisions.md` with their evidence, and the next run starts from those decisions instead of re-proposing them. Run it from the ainative-core checkout and pass the snapshot folder with `--add-dir` (or set `CLAUDE_HARNESS_SNAPSHOTS`).
 
 ## PDF (markdown to a styled PDF)
 
