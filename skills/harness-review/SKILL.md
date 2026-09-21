@@ -14,6 +14,7 @@ Review this harness against evidence of real use and propose changes. Run this f
    - `~/.claude/harness-snapshots`
    If none exists, say so and stop. Never guess paths.
 2. **The harness itself**: `rules/`, `skills/*/SKILL.md`, `agents/`, `hooks/` in the current directory.
+3. **Deferred decisions**: `docs/deferred-decisions.md`, if present. It holds what an earlier review raised but did not apply, with the evidence and the condition for revisiting. Start from those decisions; re-raise an item only when new evidence meets its revisit condition.
 
 Read the newest snapshot and, if present, the one before it. A snapshot contains counts only, for example: sessions per project and month, `Skill` tool invocations per skill, slash commands typed per command, hook firings, tool-name frequency, model switches, and the list of installed skills never invoked.
 
@@ -31,4 +32,5 @@ Work through these in order and report each with the numbers that justify it.
 - Every proposal cites a number from a snapshot or a sampled line. No proposal without evidence.
 - Propose; do not edit. After the report, offer to apply the changes and wait for the user to pick which ones.
 - When applying, edit the files in this checkout and show the diff. Never commit or push.
+- Items the user declines or defers go into `docs/deferred-decisions.md` with the numbers that raised them and what would settle them. Items applied move to its applied section for context.
 - Keep private data private: never write project paths or quoted log lines into any file in this repository.
