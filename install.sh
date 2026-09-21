@@ -66,6 +66,14 @@ for dir in rules agents hooks; do
   fi
   mv "$shipped" "$manifest"
 done
+# Rules dropped in the same release that introduced the manifests; installs that predate
+# the manifests have no record of them, so remove them by name once
+for old in go.md rust.md; do
+  if [ -f "$TARGET_DIR/rules/$old" ]; then
+    echo "Removing legacy rule: rules/$old"
+    rm -f "$TARGET_DIR/rules/$old"
+  fi
+done
 # rules/language.md is a template; fill in the chosen language
 sed "s/{{RESPONSE_LANGUAGE}}/$RESPONSE_LANGUAGE/g" "$SCRIPT_DIR/rules/language.md" > "$TARGET_DIR/rules/language.md"
 
