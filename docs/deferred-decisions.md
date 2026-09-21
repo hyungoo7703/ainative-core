@@ -15,7 +15,9 @@ decision.
 ## Applied on 2026-09-21, for context
 
 - Merged `pr-description` and `code-review-response` into `rules/git-convention.md`
-- Removed the `verify` skill and its three dangling references
+- Removed the `verify` skill, its three dangling references, and its README entry: 0 invocations,
+  and its content (build, tests, evidence before claims) duplicates the verification guidance
+  Claude Code applies by default, so unlike D1 a second snapshot could not change the answer
 - Removed the Go and Rust language rules: 0 `.go` and 0 `.rs` files across 14 active projects
 - Added manifest-based pruning for `rules/`, `agents/`, and `hooks/` in `install.sh`
 
@@ -37,8 +39,9 @@ Revisit: if the next snapshot also reads 0, delete.
 
 `research`, `tdd`, `summarize`, `why`, `check-env`
 
-`research` overlaps the built-in deep-research skill. `summarize` overlaps `/review`,
-typed 26 times. `why` overlaps `explain`, invoked 6 times.
+`research` overlaps the built-in deep-research skill. `why` overlaps `explain`, invoked
+6 times. `summarize` is the closest remaining fit for drafting a PR body now that
+`pr-description` is gone, so it carries a reason to keep that the others lack.
 
 Decision needed: same as D1.
 
