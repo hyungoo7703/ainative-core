@@ -43,9 +43,28 @@ printf '%s' "$RESPONSE_LANGUAGE" > "$LANG_FILE"
 echo "Installing ainative-core to $TARGET_DIR (response language: $RESPONSE_LANGUAGE) ..."
 
 # --- rules, agents, hook scripts (flat copy) -----------------------------------
+# Each flat dir keeps a manifest of what this version shipped, so files dropped from the
+# repo are removed on the next install. Only names the manifest lists are touched, so
+# files the user added by hand are left alone (same contract as the skills manifest).
 for dir in rules agents hooks; do
   mkdir -p "$TARGET_DIR/$dir"
-  find "$SCRIPT_DIR/$dir" -type f ! -name '.gitkeep' -exec cp {} "$TARGET_DIR/$dir/" \;
+  manifest="$TARGET_DIR/.ainative-$dir"
+  shipped="$manifest.new"
+  : > "$shipped"
+  find "$SCRIPT_DIR/$dir" -type f ! -name '.gitkeep' | while IFS= read -r src; do
+    basename "$src" >> "$shipped"
+    cp "$src" "$TARGET_DIR/$dir/"
+  done
+  if [ -f "$manifest" ]; then
+    while IFS= read -r old; do
+      [ -n "$old" ] || continue
+      if ! grep -qxF "$old" "$shipped"; then
+        echo "Removing stale $dir file: $dir/$old"
+        rm -f "$TARGET_DIR/$dir/$old"
+      fi
+    done < "$manifest"
+  fi
+  mv "$shipped" "$manifest"
 done
 # rules/language.md is a template; fill in the chosen language
 sed "s/{{RESPONSE_LANGUAGE}}/$RESPONSE_LANGUAGE/g" "$SCRIPT_DIR/rules/language.md" > "$TARGET_DIR/rules/language.md"
