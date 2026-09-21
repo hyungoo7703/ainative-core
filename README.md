@@ -10,6 +10,7 @@ ainative-core/
 ├── skills/      ← Slash commands and auto-applied workflows (one folder per skill)
 ├── agents/      ← Specialized sub-agents (reviewer, planner)
 ├── hooks/       ← Hook scripts referenced from hooks.json
+├── docs/        ← Decisions carried between harness reviews
 ├── hooks.json   ← Hook definitions merged into ~/.claude/settings.json
 └── install.sh   ← Install to ~/.claude/
 ```
@@ -25,13 +26,13 @@ bash install.sh --lang Korean   # or ko, ja, English, ...
 ## What is included
 
 ### Rules
-`language` · `coding-style` · `git-convention` · `security` · `context-persistence` · per-language rules for TypeScript, Python, Go, Rust, C#
+`language` · `coding-style` · `git-convention` · `security` · `context-persistence` · per-language rules for TypeScript, Python, C#
 
 ### Commands (skills you run with `/name`)
 `/research` · `/spec` · `/setup` · `/plan` · `/tdd` · `/check-env` · `/security` · `/summarize` · `/docs` · `/how-to-run` · `/continue` · `/why` · `/remember` · `/clip` · `/pdf` · `/usage` · `/harness-review`
 
 ### Auto skills (Claude applies them when the situation matches)
-`review` · `debug` · `verify` · `refactor` · `api-design` · `error-handling` · `performance` · `accessibility` · `pr-description` · `code-review-response` · `explain`
+`review` · `debug` · `refactor` · `api-design` · `error-handling` · `performance` · `accessibility` · `explain`
 
 ### Agents
 `reviewer` · `planner`

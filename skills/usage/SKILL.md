@@ -25,7 +25,6 @@ Show the user what ainative-core provides.
 start coding
   (auto) review   → on code changes
   (auto) debug    → on errors
-  (auto) verify   → before declaring work done
 /tdd       → test-driven development (when needed)
 /check-env → environment config check
 /security  → security audit

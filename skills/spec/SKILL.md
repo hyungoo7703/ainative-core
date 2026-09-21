@@ -42,7 +42,7 @@ For each feature:
 
 ### 5. Save
 - Save the agreed spec to **CLAUDE.md** or **docs/spec.md**
-- Later `/plan` and `/verify` runs reference it
+- Later `/plan` and `/continue` runs reference it
 
 ## Rules
 

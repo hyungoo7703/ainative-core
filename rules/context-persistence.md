@@ -14,5 +14,4 @@ Design decisions and specs must live in files as the single source of truth.
 
 - `/plan`: read the spec document
 - `/continue`: read the spec and plan documents
-- `/verify`: check against the spec document
 - While coding: never implement in a direction that contradicts recorded decisions
