@@ -21,6 +21,14 @@ decision.
 - Removed the Go and Rust language rules: 0 `.go` and 0 `.rs` files across 14 active projects
 - Added manifest-based pruning for `rules/`, `agents/`, and `hooks/` in `install.sh`
 
+## Applied on 2026-09-22
+
+- D6, review-after-write: one line in `rules/coding-style.md` saying that after a run of file
+  edits, review the diff before declaring the work done. Unlike D5 this one is measurable: the
+  next snapshot's typed `/review` count against the `review` skill's own firings tells whether
+  the rule absorbed the habit. Evidence at the time: `/review` typed 26 times, the skill
+  auto-fired 5 times, against 8,245 write operations (Edit 6,919 plus Write 1,326)
+
 ## Deferred
 
 ### D1. Auto skills with 0 invocations in 6,615 user turns
@@ -69,15 +77,6 @@ command output instead of piping it whole, and delegating broad searches to a su
 Risk: there is no way to measure whether the rule lowers the `/compact` count. Adding an
 unmeasurable rule is the habit this review exists to catch, so the proposal is held until
 the cost shows up in a second snapshot.
-
-### D6. A review-after-write rule
-
-`/review` was typed 26 times while the `review` skill auto-fired 5 times, against 8,245
-write operations: Edit 6,919 plus Write 1,326. The skill's "use after code changes"
-description is not firing in practice, and the user compensates by hand.
-
-Proposal: one line in `rules/coding-style.md` saying that after a run of file edits, offer
-a `git diff` review before declaring the work done.
 
 ### D7. Shell preference
 
