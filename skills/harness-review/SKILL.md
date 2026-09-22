@@ -16,7 +16,7 @@ Review this harness against evidence of real use and propose changes. Run this f
 2. **The harness itself**: `rules/`, `skills/*/SKILL.md`, `agents/`, `hooks/` in the current directory.
 3. **Deferred decisions**: `docs/deferred-decisions.md`, if present. It holds what an earlier review raised but did not apply, with the evidence and the condition for revisiting. Start from those decisions; re-raise an item only when new evidence meets its revisit condition.
 
-Read the newest snapshot and, if present, the one before it. A snapshot contains counts only, for example: sessions per project and month, `Skill` tool invocations per skill, slash commands typed per command, hook firings, tool-name frequency, model switches, and the list of installed skills never invoked.
+Read the newest snapshot and, if present, the one before it. A snapshot contains counts only, for example: sessions per project and month, `Skill` tool calls the model made on its own per skill, slash commands typed per command (a typed command and the `Skill` call that executes it count once, under typed; the snapshot's `Counting` field states the rule), hook firings, tool-name frequency, model switches, and the list of installed skills never invoked.
 
 ## What to produce
 

@@ -95,9 +95,12 @@ work.
 
 ## Known measurement limits
 
-- The collector's `SkillCalls` and `TypedCommands` counters are not mutually exclusive:
-  skills marked `disable-model-invocation: true` still appear under `SkillCalls`. The two
-  numbers cannot be summed, and any total built from them is an upper bound.
+- The collector's `SkillCalls` and `TypedCommands` counters are exclusive per event since
+  2026-09-22: a typed slash command counts under `TypedCommands`, and the `Skill` call that
+  executes it is not counted again. `SkillCalls` therefore means calls the model made on its
+  own. Snapshots before that date may count one typed command twice; the snapshot's
+  `Counting` field states the rule in force. The two numbers still measure different things
+  and must not be summed.
 - Rules are injected, never logged, so no rule can be measured by invocation count.
   Every rule decision recorded here rests on reference integrity and on whether matching
   code exists at all, not on usage counts.
