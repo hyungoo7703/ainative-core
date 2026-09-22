@@ -11,6 +11,7 @@ ainative-core/
 ├── agents/      ← Specialized sub-agents (reviewer, planner)
 ├── hooks/       ← Hook scripts referenced from hooks.json
 ├── docs/        ← Decisions carried between harness reviews
+├── CLAUDE.md    ← Conventions for working on this repo with Claude Code
 ├── hooks.json   ← Hook definitions merged into ~/.claude/settings.json
 └── install.sh   ← Install to ~/.claude/
 ```
