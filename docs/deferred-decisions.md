@@ -29,6 +29,13 @@ decision.
   the rule absorbed the habit. Evidence at the time: `/review` typed 26 times, the skill
   auto-fired 5 times, against 8,245 write operations (Edit 6,919 plus Write 1,326)
 
+## Applied on 2026-10-13
+
+- Renamed the `usage` skill to `how-to-use`. A user skill named `usage` shadows the built-in
+  `/usage` (plan usage limits), so every `/usage` typed since the install ran this skill instead:
+  4 typed calls, all of them aimed at the built-in, after which the user fell back to
+  `/usage-credits`. D4 below stays open; its count restarts under the new name
+
 ## Deferred
 
 ### D1. Auto skills with 0 invocations in 6,615 user turns
@@ -59,9 +66,9 @@ Decision needed: same as D1.
 window, which is exactly when `setup` would apply. Not enough to call it dead.
 Revisit: needs two snapshots.
 
-### D4. `usage`, candidate for replacement by the README
+### D4. `how-to-use` (was `usage`), candidate for replacement by the README
 
-0 invocations. Its job, showing what the harness provides, is a one-shot task the README
+0 intended invocations; the 4 calls under the old name were meant for the built-in `/usage`. Its job, showing what the harness provides, is a one-shot task the README
 already covers.
 
 Decision needed: delete and point users at the README, or keep.
@@ -105,4 +112,6 @@ work.
   Every rule decision recorded here rests on reference integrity and on whether matching
   code exists at all, not on usage counts.
 - Skill names that collide with built-ins, namely `docs`, `review`, `plan`, `pdf`, and
-  `research`, cannot be attributed to one side or the other from a snapshot alone.
+  `research`, cannot be attributed to one side or the other from a snapshot alone. A user
+  skill wins over a built-in of the same name, so such a collision also hides the built-in;
+  `usage` was renamed for that reason. Check new skill names against the built-in commands

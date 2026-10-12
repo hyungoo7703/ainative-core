@@ -1,5 +1,5 @@
 ---
-name: usage
+name: how-to-use
 description: Show what ainative-core provides and the recommended workflow.
 disable-model-invocation: true
 ---

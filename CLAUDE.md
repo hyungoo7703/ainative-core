@@ -7,6 +7,7 @@ Personal Claude Code harness, installed into `~/.claude/` by `install.sh`. Publi
 - Everything here is in English. The response language is substituted into `rules/language.md` at install time, never committed
 - A skill with `disable-model-invocation: true` is a command the user runs as `/name`. A skill without it is an auto skill: its `description` is the trigger, so write it as "use when ..."
 - Skill folder name and the `name` field in `SKILL.md` must match; `install.sh` copies by folder
+- A skill name must not match a built-in Claude Code command: the user skill wins and the built-in becomes unreachable (`usage` hid `/usage` until it was renamed `how-to-use`)
 - `install.sh` removes what a previous install shipped and this version no longer does, using manifests in `~/.claude/.ainative-*`. When renaming or deleting a rule, agent, hook, or skill, that is all that is needed; do not add special cases unless the file predates the manifests
 - `rules/languages/*.md` are copied flat into `~/.claude/rules/`, so their file names must not collide with the top-level rules
 - Hook scripts live in `hooks/` and are referenced from `hooks.json` with the `[ainative-core]` marker, which is how reinstalls find and replace them in `settings.json`

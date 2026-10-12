@@ -30,7 +30,7 @@ bash install.sh --lang Korean   # or ko, ja, English, ...
 `language` · `coding-style` · `git-convention` · `security` · `context-persistence` · per-language rules for TypeScript, Python, C#
 
 ### Commands (skills you run with `/name`)
-`/research` · `/spec` · `/setup` · `/plan` · `/tdd` · `/check-env` · `/security` · `/summarize` · `/docs` · `/how-to-run` · `/continue` · `/why` · `/remember` · `/clip` · `/pdf` · `/usage` · `/harness-review`
+`/research` · `/spec` · `/setup` · `/plan` · `/tdd` · `/check-env` · `/security` · `/summarize` · `/docs` · `/how-to-run` · `/continue` · `/why` · `/remember` · `/clip` · `/pdf` · `/how-to-use` · `/harness-review`
 
 ### Auto skills (Claude applies them when the situation matches)
 `review` · `debug` · `refactor` · `api-design` · `error-handling` · `performance` · `accessibility` · `explain`
