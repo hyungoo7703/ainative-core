@@ -39,7 +39,7 @@ bash install.sh --lang Korean   # or ko, ja, English, ...
 `reviewer` · `planner`
 
 ### Hooks
-- `SessionStart`: shows inbox items for the current project or due within 7 days; archives checked items (`[x]`, e.g. ticked in Obsidian) and items more than 30 days past due
+- `SessionStart`: shows inbox items for the current project or due within 7 days; archives checked items (`[x]`, e.g. ticked in Obsidian) and items more than 30 days past due. Each run states that its list replaces earlier ones in the conversation, says so when nothing is open, and tells the session to re-read the inbox file before calling an item still open, so a long-lived session does not keep reporting items that were closed since
 
 ## Remember (cross-project inbox)
 

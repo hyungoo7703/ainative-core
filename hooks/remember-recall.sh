@@ -62,5 +62,14 @@ HITS=$(grep '^- \[ \]' "$INBOX" | while IFS= read -r line; do
   fi
 done)
 
-[ -n "$HITS" ] && printf '[ainative-core] Inbox items to remember (as of %s, project: %s)\n%s\nMention these to the user. When handled, run /remember done <keyword>, or tick the box in the inbox file.\n' "$TODAY" "$PROJECT" "$HITS"
+# A session only hears from this hook when it starts or resumes, and it keeps every earlier
+# list in its context. So each run says outright that it supersedes the earlier ones, speaks
+# even when there is nothing to list, and tells the session to re-read the file before it
+# claims later that an item is still open.
+NOW=$(date '+%Y-%m-%d %H:%M')
+if [ -n "$HITS" ]; then
+  printf '[ainative-core] Inbox items to remember (as of %s, project: %s)\n%s\nThis list replaces every earlier inbox list in this conversation. An item from an earlier list that is not here was closed or rescheduled: do not bring it up.\nIt is a snapshot taken at the time above. Before telling the user later that an item is still open, re-read %s.\nMention these to the user. When handled, run /remember done <keyword>, or tick the box in the inbox file.\n' "$NOW" "$PROJECT" "$HITS" "$INBOX"
+else
+  printf '[ainative-core] Inbox: nothing open for this project or due within 7 days (as of %s, project: %s). Every earlier inbox list in this conversation is outdated: do not bring up items from it. Before telling the user that an item is still open, re-read %s.\n' "$NOW" "$PROJECT" "$INBOX"
+fi
 exit 0
